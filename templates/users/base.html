@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<title>岁月并非如歌</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            padding-top: 50px;
+        }
+        .start{
+            padding: 40px 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+           <div class="navbar-header">
+               <a href="#" class="navbar-brand">岁月并非如歌</a>
+           </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class='nav navbar-nav'>
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contest</a></li>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                {#        <button type="submit" class="btn btn-default">Submit</button>#}
+                        <button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
+                    </form>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% block login %}
+                    {% endblock %}
+                </ul>
+            </div>
+        </div>
+     </nav>
+<div class="container">
+    <div class="start">
+        <h1>Bootstrap starter template</h1>
+        <p class="lead">岁月并非如歌</p>
+    </div>
+</div>
+</body>
+</html>

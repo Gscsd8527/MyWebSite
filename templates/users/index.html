@@ -1,0 +1,21 @@
+{% extends 'users/base.html' %}
+
+
+{% block login %}
+    {% if user %}
+{#        <li><a>{{ message }}</a></li>#}
+        <li><a href="/register/">注册</a></li>
+        <li><a href="/login/">登录</a></li>
+    {% else %}
+        <li><a>您好： {{ username }}</a></li>
+        <li><a href="/logout/">注销</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户信息 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">用户信息</a></li>
+            <li><a href="#">修改密码</a></li>
+            <li><a href="#">设置</a></li>
+          </ul>
+        </li>
+    {% endif %}
+{% endblock %}
