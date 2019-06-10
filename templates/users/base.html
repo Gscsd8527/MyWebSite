@@ -19,14 +19,17 @@
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-           <div class="navbar-header">
-               <a href="#" class="navbar-brand">岁月并非如歌</a>
-           </div>
+{#           <div class="navbar-header">#}
+{#               <a href="#" class="navbar-brand">岁月并非如歌</a>#}
+{#           </div>#}
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class='nav navbar-nav'>
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contest</a></li>
+                    <li class="active"><a href="{% url "users:index" %}">主页</a></li>
+                    <li><a href="{% url "users:recommend" %}">推荐</a></li>
+                    <li><a href="{% url "users:hot" %}">热点</a></li>
+                    <li><a href="#">科技</a></li>
+                    <li><a href="#">互联网</a></li>
+                    <li><a href="#">我的博文</a></li>
                     <form class="navbar-form navbar-left">
                         <div class="form-group">
                           <input type="text" class="form-control" placeholder="Search">
@@ -44,8 +47,12 @@
      </nav>
 <div class="container">
     <div class="start">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">岁月并非如歌</p>
+        {% block content %}
+            <h1>这是主页</h1>
+            <p class="lead">岁月并非如歌</p>
+        {% endblock %}
+{#        <h1>Bootstrap starter template</h1>#}
+{#        <p class="lead">岁月并非如歌</p>#}
     </div>
 </div>
 </body>

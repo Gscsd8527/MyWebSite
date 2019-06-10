@@ -22,7 +22,10 @@ def Login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         if not all([id, username, password]):
-            return HttpResponse('参数不全')
+            context = {
+                'error_msg': '参数不全'
+            }
+            return render(request, 'users/login.html', context)
         # 业务处理： 登录校验
         try:
             User = UserInfo.objects.get(username=username)
@@ -45,19 +48,15 @@ def Login(request):
                     response.delete_cookie('username')
                 return response
             else:
-                index = 1
                 context = {
-                    'user': index,
-                    # 'message': '用户未激活'
+                    'error_msg': '用户未激活'
                 }
-                return render(request, 'users/index.html', context)
+                return render(request, 'users/login.html', context)
         except UserInfo.DoesNotExist:
-            index = 1
             context = {
-                'user': index,
-                # 'message': '没有该用户'
+                'error_msg': '没有该用户'
             }
-            return render(request, 'users/index.html', context)
+            return render(request, 'users/login.html', context)
         # else:
         #     # 校验用户是否重复
         #     try:
@@ -94,7 +93,10 @@ def Register(request):
         password = request.POST.get('password')
         email = request.POST.get('email')
         if not all([id, username, password, email]):
-            return HttpResponse('参数不全')
+            context = {
+                'error_msg': '用户名、密码、邮箱有空值'
+            }
+            return render(request, 'users/register.html', context)
 
         # 检查用户名是否重复
         User = UserInfo.objects.filter(username=username)
@@ -108,4 +110,39 @@ def Register(request):
             request.session['username'] = username
             return redirect(reverse('users:index'))
         else:
-            return HttpResponse('用户名重复')
+            context = {
+                'error_msg': '用户名已存在'
+            }
+            return render(request, 'users/register.html', context)
+
+def HotTopic(request):
+    username = ''
+    try:
+        username = request.session['username']
+        index = 0
+    except:
+        index = 1
+    context = {
+        'user': index,
+        'username': username
+    }
+    return render(request, 'users/hot_topic.html', context=context)
+
+def Recommend(request):
+    username = ''
+    try:
+        username = request.session['username']
+        index = 0
+    except:
+        index = 1
+    context = {
+        'user': index,
+        'username': username
+    }
+    nar = {
+        'title': ['啦啦啦1','啦啦啦2','啦啦啦3','啦啦啦4','啦啦啦5','啦啦啦6','啦啦啦7',
+                  '啦啦啦1', '啦啦啦2', '啦啦啦3', '啦啦啦4', '啦啦啦5', '啦啦啦6', '啦啦啦7',
+                ]
+    }
+    context.update(nar)
+    return render(request, 'users/recommend.html', context=context)

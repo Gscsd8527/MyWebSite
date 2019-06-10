@@ -1,0 +1,19 @@
+{% extends 'users/index.html' %}
+<link rel="stylesheet" href="/static/css/recommend.css"/>
+{% block content %}
+{#     <table data-toggle="table" data-url="data1.json" style="border: 1px solid red">#}
+     <table id="table">
+    {% for foo in title %}
+        <tr>
+            <p class="mytd">{{ foo }}</p>
+        </tr>
+{#    <table>#}
+{#         <tr>#}
+{#             <td class="mytd" style="font-size: 20px; text-indent: 100px">{{ foo }}<td>#}
+{#             <td style="font-size: 15px; color: red">{{ foo }}<td>#}
+{#         </tr>#}
+{#         <br>#}
+{#     </table>#}
+   {% endfor %}
+     </table>
+{% endblock %}
