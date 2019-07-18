@@ -146,3 +146,34 @@ def Recommend(request):
     }
     context.update(nar)
     return render(request, 'users/recommend.html', context=context)
+
+# 用户资料
+def UserData(request):
+    username = ''
+    userinfo = {}
+    try:
+        username = request.session['username']
+        print('BBusername= ', username)
+        try:
+            data = UserInfo.objects.get(username=username)
+            name = data.username
+            email = data.email
+            update_time = data.update_time
+            userinfo = {
+                'name': name,
+                'email': email,
+                'update_time': update_time
+            }
+
+        except Exception as e:
+            print('e= ', e)
+        index = 0
+    except:
+        index = 1
+    context = {
+        'user': index,
+        'username': username,
+        'userinfo': userinfo
+    }
+    print('AAAcontext= ', context)
+    return render(request, 'users/user_data.html', context=context)

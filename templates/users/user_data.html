@@ -1,0 +1,7 @@
+{% extends 'users/index.html' %}
+
+{% block content %}
+    用户名： {{ userinfo.name }}<br>
+    邮  箱： {{ userinfo.email }}<br>
+    最近登录时间：{{ userinfo.update_time }}
+{% endblock %}
