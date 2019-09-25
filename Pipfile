@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 pymysql = "*"
 mysqlclient = {path = "D:/software/mysqlclient-1.4.2-cp36-cp36m-win_amd64.whl"}
+django = "*"
 
 [requires]
 python_version = "3.6"

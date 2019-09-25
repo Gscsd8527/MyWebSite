@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from .models import UserInfo
-
+import datetime
 # Create your views here.
+from django.contrib.auth.decorators import login_required
 
 def Index(request):
     username = ''
@@ -32,6 +33,8 @@ def Login(request):
             if User.is_active:
                 # 用户已激活
                 request.session['username'] = username
+                User.update_time = str(datetime.datetime.today())
+                User.save()
                 # index = 0
                 # context = {
                 #     'user': index,
@@ -177,3 +180,17 @@ def UserData(request):
     }
     print('AAAcontext= ', context)
     return render(request, 'users/user_data.html', context=context)
+
+@login_required
+def MyBolg(request):
+    username = ''
+    try:
+        username = request.session['username']
+        index = 0
+    except:
+        index = 1
+    context = {
+        'user': index,
+        'username': username
+    }
+    return render(request, 'users/myBlog.html', context)

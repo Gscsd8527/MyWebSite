@@ -1,7 +1,18 @@
 {% extends 'users/index.html' %}
+{% load staticfiles %}
 
 {% block content %}
-    用户名： {{ userinfo.name }}<br>
-    邮  箱： {{ userinfo.email }}<br>
-    最近登录时间：{{ userinfo.update_time }}
+    <link rel="stylesheet" href="{% static 'css/recommend.css' %}"/>
+    <table class="table1">
+        <tr>
+            <td class="t1">用户名</td>
+            <td class="t1">邮  箱</td>
+            <td class="t1">最近登录时间</td>
+        </tr>
+        <tr>
+            <td>{{ userinfo.name }}</td>
+            <td>{{ userinfo.email }}</td>
+            <td>{{ userinfo.update_time }}</td>
+        </tr>
+    </table>
 {% endblock %}

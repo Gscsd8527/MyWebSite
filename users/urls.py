@@ -1,6 +1,6 @@
 from django.urls import path
 app_name = 'users'
-from .views import Index, Login, Logout, Register, HotTopic, Recommend, UserData
+from .views import Index, Login, Logout, Register, HotTopic, Recommend, UserData, MyBolg
 urlpatterns = [
     path('', Index, name='index'),
     path('login/', Login, name='login'),
@@ -9,4 +9,5 @@ urlpatterns = [
     path('hot/', HotTopic, name='hot'),
     path('recommend/', Recommend, name='recommend'),
     path('userdata/', UserData, name='userdata'),
+    path('myBlog', MyBolg, name='myblog')
 ]
